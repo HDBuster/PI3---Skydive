@@ -8,16 +8,19 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] InputActionAsset input;
     Rigidbody rb;
+    Vector2 move;
 
+    [Header("Velocidade de manobra")]
     [SerializeField] float moveForce;
+
     void Start()
     {
-        input.FindActionMap("Player").FindAction("move").performed += OnMove;
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnMove(InputAction.CallbackContext context)
+    private void FixedUpdate()
     {
-        rb.AddForce(new Vector3(context.ReadValue<Vector2>().y * (-1),0, context.ReadValue<Vector2>().x) * moveForce, ForceMode.Impulse);
+        move = input.FindActionMap("Player").FindAction("move").ReadValue<Vector2>();
+        rb.velocity = new Vector3((move.y * (-1)) * moveForce, rb.velocity.y, move.x * moveForce);
     }
 }
