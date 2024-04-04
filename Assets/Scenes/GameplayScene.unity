@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 1892578253}
   - component: {fileID: 1892578254}
   - component: {fileID: 1892578255}
+  - component: {fileID: 1892578256}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -678,8 +679,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: -944628639613478452, guid: 60aec242de116ab4c8a0da8e3e3a2a0e, type: 3}
+  parachute: {fileID: 1892578256}
   diveMultiplier: 2
   fallSpeed: 0
+--- !u!114 &1892578256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892578246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388eb8a47156a8a4892e6130cc936dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: -944628639613478452, guid: 60aec242de116ab4c8a0da8e3e3a2a0e, type: 3}
+  parachuteDrag: 5
+  isParachute: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
