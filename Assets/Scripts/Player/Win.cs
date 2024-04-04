@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Win : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class Win : MonoBehaviour
         if (collision.gameObject.CompareTag("WinFinish") && parachuteCheck)
         {
             playerWin = true;
+            WinScene();
         }
+    }
+
+    private void WinScene()
+    {
+        SceneManager.LoadSceneAsync(2);
     }
 }
