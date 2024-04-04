@@ -9,6 +9,8 @@ public class Parachute : MonoBehaviour
     Rigidbody rb;
 
     [SerializeField] [Range(1, 5)] float parachuteDrag;
+
+    public bool isParachuteOn = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,6 +21,7 @@ public class Parachute : MonoBehaviour
         if (input.FindActionMap("Player").FindAction("parachute").ReadValue<float>() == 1)
         {
             rb.drag = parachuteDrag;
+            isParachuteOn = true;
         }
     }
 }
