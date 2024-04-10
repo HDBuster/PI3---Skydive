@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 public class Win : MonoBehaviour
 {
     Rigidbody rb;
+    PlayerMachineStates.State state;
 
     public bool playerWin = false;
-
-    bool parachuteCheck;
 
     void Start()
     {
@@ -18,12 +17,12 @@ public class Win : MonoBehaviour
 
     private void Update()
     {
-        parachuteCheck = this.GetComponent<Parachute>().isParachuteOn;
+        state = GetComponent<PlayerMachineStates>().state;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("WinFinish") && parachuteCheck)
+        if (collision.gameObject.CompareTag("WinFinish") && state == PlayerMachineStates.State.Parachute)
         {
             playerWin = true;
             WinScene();
