@@ -451,6 +451,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1892578246}
+  shakeLimit: 0.5
+  shakeForce: 0.03
+  shakeWait: 1
+  shake: 0
 --- !u!1 &1892578246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7384407328707273477, guid: cbeaaf29364ae6744aebde501784eb75, type: 3}
