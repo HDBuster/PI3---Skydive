@@ -51,7 +51,7 @@ public class PlayerMove : MonoBehaviour
         StateFalling();
 
         //Rotate by looking around
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(mouse.x * lookSpeed, 0, 0));
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(0, 0, mouse.x * lookSpeed));
     }
 
     void Update() //Update everthing else

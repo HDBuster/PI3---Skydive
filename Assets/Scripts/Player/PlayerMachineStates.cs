@@ -10,6 +10,8 @@ public class PlayerMachineStates : MonoBehaviour
     Vector2 move;
     float parachute;
 
+    MeshRenderer objectParachute;
+
     public enum State {Flat, Angle, HeadDown, Parachute, Land }
     public State state = State.Angle;
 
@@ -82,6 +84,7 @@ public class PlayerMachineStates : MonoBehaviour
     void ParachuteState()
     {
         //actions
+        objectParachute.enabled = true;
 
         //transitions
     }
@@ -102,5 +105,11 @@ public class PlayerMachineStates : MonoBehaviour
     {
         move = input.FindActionMap("Player").FindAction("move").ReadValue<Vector2>();
         parachute = input.FindActionMap("Player").FindAction("parachute").ReadValue<float>();
+    }
+
+    private void Start()
+    {
+        objectParachute = this.transform.GetChild(2).GetComponent<MeshRenderer>();
+        objectParachute.enabled = false;
     }
 }
