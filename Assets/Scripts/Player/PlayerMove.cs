@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rb;
     Vector2 move;
     Vector2 mouse;
+    [SerializeField] GameObject cameraa;
 
     [Header("Stats")]
     [SerializeField] float fallSpeed;
@@ -51,7 +52,26 @@ public class PlayerMove : MonoBehaviour
         StateFalling();
 
         //Rotate by looking around
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(0, 0, mouse.x * lookSpeed));
+        switch (state)
+        {
+            case PlayerMachineStates.State.Flat:
+            case PlayerMachineStates.State.Angle:
+            case PlayerMachineStates.State.HeadDown:
+                rb.MoveRotation(rb.rotation * Quaternion.Euler(0, 0, mouse.x * lookSpeed * (-1)));
+                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+                break;
+            case PlayerMachineStates.State.Parachute:
+                rb.MoveRotation(rb.rotation * Quaternion.Euler(0, mouse.x * lookSpeed, 0));
+                rb.constraints = RigidbodyConstraints.None;
+                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                break;
+        }
+
+        //rb.MoveRotation(rb.rotation * Quaternion.Euler(0, 0, mouse.x * lookSpeed * (-1)));
+
+        //Camera
+        cameraa.transform.position = this.transform.position;
+        cameraa.transform.Rotate(0, mouse.x * lookSpeed, 0);
     }
 
     void Update() //Update everthing else
