@@ -92,10 +92,13 @@ public class PlayerMachineStates : MonoBehaviour
         }
     }
 
+    [SerializeField] AudioClip parachuteAudio;
+
     void ParachuteState()
     {
         //actions
         objectParachute.enabled = true;
+        
         //rb.MoveRotation(Quaternion.Euler(0, 180, 0));
         //this.transform.rotation = Quaternion.Slerp(Quaternion.Euler(90,180,this.transform.rotation.z),Quaternion.Euler(0,180,this.transform.rotation.z), 1 * Time.fixedDeltaTime);
 
@@ -103,10 +106,12 @@ public class PlayerMachineStates : MonoBehaviour
         {
             case false: 
                 Animation("OpenParachute");
+                
                 if (!parachuteOpen)
                 {
                     //rb.MoveRotation(Quaternion.Euler(0, this.transform.rotation.z, 0));
                     transform.rotation = Quaternion.Euler(0f, this.transform.rotation.z, 0f);
+                    AudioSource.PlayClipAtPoint(parachuteAudio, this.transform.position, 1);
                 }
                 //this.transform.rotation = Quaternion.Slerp();
                         break;

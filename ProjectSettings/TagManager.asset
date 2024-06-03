@@ -6,6 +6,8 @@ TagManager:
   tags:
   - WinFinish
   - PointCircle
+  - SeaWater
+  - Ground
   layers:
   - Default
   - TransparentFX
