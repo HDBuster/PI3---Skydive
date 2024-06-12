@@ -130,6 +130,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 941c05e18b900f44f9d973bd5736c976, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5344494768634522093}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 941c05e18b900f44f9d973bd5736c976, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 688788611794876292}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 941c05e18b900f44f9d973bd5736c976, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8788536107610385697}
   m_SourcePrefab: {fileID: 100100000, guid: 941c05e18b900f44f9d973bd5736c976, type: 3}
 --- !u!1 &1344574165195017109 stripped
 GameObject:
@@ -202,8 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWin: 0
   playerDefeat: 0
-  landGround: {fileID: 8300000, guid: 279286a58fef39b4ab0f7378df875863, type: 3}
-  seaWater: {fileID: 8300000, guid: 7810668f29fc7594c975bbe9cc2cd003, type: 3}
+  gameSFX: {fileID: 0}
 --- !u!65 &4853217929140358778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -312,7 +317,7 @@ AudioSource:
   m_GameObject: {fileID: 1344574165195017109}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1eb2fb351bbe85c4699eb16978ea55f3, type: 2}
   m_audioClip: {fileID: 8300000, guid: 25371067bf8fe3142be2ac39b8216306, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -399,6 +404,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &688788611794876292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344574165195017109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8829299383b772942abc3ae2c8ea7236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altitudeUI: {fileID: 0}
+--- !u!114 &8788536107610385697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344574165195017109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0894d3f947e27543b624f7cb591ccf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: -944628639613478452, guid: 60aec242de116ab4c8a0da8e3e3a2a0e, type: 3}
+  pauseCanvas: {fileID: 0}
 --- !u!4 &1865391539386945839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 941c05e18b900f44f9d973bd5736c976, type: 3}

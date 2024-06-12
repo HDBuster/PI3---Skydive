@@ -1,0 +1,9 @@
+-Raider Crusader 3D + Preenchimento separado
+tamanhos 250 e 150
+Contorno: preto #000000 ;
+Preenchimento: azul: #859bab
+
+-Raider Crusader Straight
+tamanhos 80 e 60 
+Contorno: azul #5a6168 ;
+Preenchimento: Preto: #000000

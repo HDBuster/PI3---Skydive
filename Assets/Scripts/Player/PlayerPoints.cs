@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
 public class PlayerPoints : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerPoints : MonoBehaviour
     [SerializeField] GameObject circle;
     [SerializeField] Points points;
     [SerializeField] AudioClip pointClip;
+    [SerializeField] AudioMixerGroup mixerGroup;
 
     [SerializeField] TextMeshProUGUI pointUI;
     Rigidbody rb;
@@ -21,7 +23,7 @@ public class PlayerPoints : MonoBehaviour
 
     private void Update()
     {
-        pointUI.text = points.points.ToString();
+        pointUI.text = points.points.ToString() + " p";
     }
 
     private void OnTriggerEnter(Collider col)

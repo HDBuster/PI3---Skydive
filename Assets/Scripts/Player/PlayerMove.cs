@@ -28,19 +28,19 @@ public class PlayerMove : MonoBehaviour
         switch (state)
         {
             case PlayerMachineStates.State.Flat:
-                rb.AddRelativeForce(Vector3.forward * sideForce * move.x); // Move sideways
-                rb.AddRelativeForce(Vector3.up * forwardForce); //Move forward
+                rb.AddRelativeForce(Vector3.forward * sideForce * move.x * Time.fixedDeltaTime); // Move sideways
+                rb.AddRelativeForce(Vector3.up * forwardForce * Time.fixedDeltaTime); //Move forward
                 rb.drag = 1;
                 break;
             case PlayerMachineStates.State.Angle:
-                rb.AddRelativeForce(Vector3.up * forwardForce * 4); //Move forward
+                rb.AddRelativeForce(Vector3.up * forwardForce * 4 * Time.fixedDeltaTime); //Move forward
                 rb.drag = 0.75f;
                 break;
             case PlayerMachineStates.State.HeadDown:
                 rb.drag = 0.25f;
                 break;
             case PlayerMachineStates.State.Parachute:
-                rb.AddRelativeForce(Vector3.up * (forwardForce * 7)); //Move foward faster
+                rb.AddRelativeForce(Vector3.up * (forwardForce * 7) * Time.fixedDeltaTime); //Move foward faster
                 rb.drag = 1.5f;
                 break;
         }
