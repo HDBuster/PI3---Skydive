@@ -18,6 +18,6 @@ public class UICompass : MonoBehaviour
     {
         var directionVector = (player.transform.position - target.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(player.transform.up, directionVector);
-        transform.rotation = Quaternion.Euler(0,0, lookRotation.eulerAngles.y + 180);
+        transform.rotation = Quaternion.Euler(0, 0, (-lookRotation.eulerAngles.y + player.transform.rotation.eulerAngles.y));
     }
 }
