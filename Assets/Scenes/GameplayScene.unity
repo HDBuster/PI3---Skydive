@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 1214951558927283924, guid: 7510ac0f3daec1b48aca8fc7d76c35c2, type: 3}
+  player: {fileID: 413444964}
+  target: {fileID: 303371997}
 --- !u!114 &3064052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1692,7 @@ Transform:
   m_GameObject: {fileID: 413444964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10000, z: 0}
+  m_LocalPosition: {x: 1000, y: 10000, z: 1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
