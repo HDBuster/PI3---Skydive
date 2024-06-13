@@ -13,13 +13,16 @@ public class PlayerMachineStates : MonoBehaviour
     float parachute;
     [SerializeField] float transitionTime;
     [SerializeField] float animationSpeed;
+    [SerializeField] int parachuteHeight;
     bool isParachuteOn;
     bool parachuteOpen;
+    [SerializeField] ParachuteDetector parachuteDetector;
 
     Rigidbody rb;
     MeshRenderer objectParachute;
     [SerializeField]Animator animator;
     [SerializeField] Animator cameraAnimator;
+    [SerializeField] AudioSource parachuteHeightBeep;
 
     public enum State {Flat, Angle, HeadDown, Parachute, Land }
     public State state = State.Angle;
@@ -27,6 +30,11 @@ public class PlayerMachineStates : MonoBehaviour
     void Update()
     {
         SwitchState();
+
+        if (transform.position.y <= parachuteHeight + 5 && transform.position.y >= parachuteHeight)
+        {
+            parachuteHeightBeep.Play();
+        }
     }
 
     void SwitchState()
@@ -52,7 +60,7 @@ public class PlayerMachineStates : MonoBehaviour
         {
             state = State.Angle;
         }
-        else if (parachute == 1 && rb.position.y <= 200)
+        else if (parachute == 1 && rb.position.y <= parachuteHeight)
         {
             state = State.Parachute;
         }
@@ -73,7 +81,7 @@ public class PlayerMachineStates : MonoBehaviour
         {
             state = State.Flat;
         }
-        else if (parachute == 1 && rb.position.y <= 200)
+        else if (parachute == 1 && rb.position.y <= parachuteHeight)
         {
             state = State.Parachute;
         }
@@ -90,26 +98,45 @@ public class PlayerMachineStates : MonoBehaviour
         {
             state = State.Angle;
         }
-        else if (parachute == 1 && rb.position.y <= 200)
+        else if (parachute == 1 && rb.position.y <= parachuteHeight)
         {
             state = State.Parachute;
         }
     }
 
-    [SerializeField] AudioClip parachuteAudio;
+    //[SerializeField] AudioClip parachuteAudio;
+    [SerializeField] AudioSource parachuteAudio;
 
     void ParachuteState()
     {
         //actions
         //cameraAnimator.Play("camera1");
         CameraAnimation("camera1");
-        objectParachute.enabled = true;
-        objectParachute.transform.localScale = Vector3.Lerp(objectParachute.transform.localScale, new Vector3(40, 72, 60), 0.1f);
+        
+
+        switch (parachuteDetector.isParachuteOpen)
+        {
+            case false:
+                Animation("OpenParachute");
+                animator.speed = 2;
+                break;
+            case true:
+                Animation("ParachuteIdle");
+                animator.speed = 1;
+                objectParachute.enabled = true;
+                objectParachute.transform.localScale = Vector3.Lerp(objectParachute.transform.localScale, new Vector3(40, 72, 60), 0.1f);
+                if (!isParachuteOn)
+                {
+                    parachuteAudio.Play();
+                    isParachuteOn = true;
+                }
+                break;
+        }
         
         //rb.MoveRotation(Quaternion.Euler(0, 180, 0));
         //this.transform.rotation = Quaternion.Slerp(Quaternion.Euler(90,180,this.transform.rotation.z),Quaternion.Euler(0,180,this.transform.rotation.z), 1 * Time.fixedDeltaTime);
 
-        switch (isParachuteOn)
+        /*switch (isParachuteOn)
         {
             case false: 
                 Animation("OpenParachute");
@@ -118,12 +145,12 @@ public class PlayerMachineStates : MonoBehaviour
                 {
                     //rb.MoveRotation(Quaternion.Euler(0, this.transform.rotation.z, 0));
                     //transform.rotation = Quaternion.Euler(0f, this.transform.rotation.z, 0f);
-                    AudioSource.PlayClipAtPoint(parachuteAudio, this.transform.position, 1);
+                    //AudioSource.PlayClipAtPoint(parachuteAudio, this.transform.position, 1);
                 }
                 //this.transform.rotation = Quaternion.Slerp();
                         break;
             case true: Animation("ParachuteIdle"); break;
-        }
+        }*/
         //transitions
     }
 

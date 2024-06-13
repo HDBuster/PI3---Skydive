@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea9fdcc62963d0438c694afc6f02ba1, type: 3}
   m_Name: PostGameSFX
   m_EditorClassIdentifier: 
-  sound: 1
+  sound: 0

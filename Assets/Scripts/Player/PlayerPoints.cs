@@ -9,7 +9,8 @@ public class PlayerPoints : MonoBehaviour
 {
     [SerializeField] GameObject circle;
     [SerializeField] Points points;
-    [SerializeField] AudioClip pointClip;
+    //[SerializeField] AudioClip pointClip;
+    [SerializeField] AudioSource pointClip;
     [SerializeField] AudioMixerGroup mixerGroup;
 
     [SerializeField] TextMeshProUGUI pointUI;
@@ -42,7 +43,9 @@ public class PlayerPoints : MonoBehaviour
         {
             points.points = points.points + 50;
             col.transform.parent.gameObject.SetActive(false);
-            AudioSource.PlayClipAtPoint(pointClip, this.transform.position, 1);
+            pointClip.Play();
+            pointClip.pitch = Random.Range(1f, 1.5f);
+            //AudioSource.PlayClipAtPoint(pointClip, this.transform.position, 1);
         }
     }
 }

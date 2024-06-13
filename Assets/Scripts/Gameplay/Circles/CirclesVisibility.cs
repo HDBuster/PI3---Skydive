@@ -15,7 +15,7 @@ public class CirclesVisibility : MonoBehaviour
     {
         foreach (Transform child in this.transform)
         {
-            if ((player.transform.position.y < child.position.y + 200 && player.transform.position.y > child.position.y - 200))
+            if ((player.transform.position.y < child.position.y + 800 && player.transform.position.y > child.position.y - 800))
             {
                 child.gameObject.GetComponent<MeshRenderer>().enabled = true;
             }

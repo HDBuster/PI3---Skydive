@@ -11,6 +11,9 @@ public class TabButtons : MonoBehaviour
     [SerializeField]
     GameObject credits;
 
+    [SerializeField] AudioSource menuMusic;
+    [SerializeField] AudioSource creditsMusic;
+
     private void Start()
     {
         /*menu = GameObject.Find("Menu");
@@ -28,6 +31,8 @@ public class TabButtons : MonoBehaviour
     {
         menu.SetActive(false);
         credits.SetActive(true);
+        menuMusic.Stop();
+        creditsMusic.Play();
     }
 
     public void BackButton()
@@ -35,5 +40,14 @@ public class TabButtons : MonoBehaviour
         options.SetActive(false);
         credits.SetActive(false);
         menu.SetActive(true);
+    }
+
+    public void BackButtonCredits() 
+    {
+        options.SetActive(false);
+        credits.SetActive(false);
+        menu.SetActive(true);
+        creditsMusic.Stop();
+        menuMusic.Play();
     }
 }

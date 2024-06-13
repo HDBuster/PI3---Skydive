@@ -32,7 +32,7 @@ public class GenerateCircles : MonoBehaviour
             Instantiate(circle, new Vector3(0, -1, 0), Quaternion.identity, this.transform);
         }*/
 
-        for (int i = 1; i < ((playerHeight - 200) * 0.005f); i++) // Instantiate circles. Quantity depends on player initial height.
+        for (int i = 1; i < ((playerHeight - 300) * 0.0033f); i++) // Instantiate circles. Quantity depends on player initial height.
         {
             var random = Random.Range(0, 4);
             switch (random)
@@ -58,7 +58,7 @@ public class GenerateCircles : MonoBehaviour
         {
             //child.position = new Vector3(0,((child.transform.GetSiblingIndex() + 1) * 100) + 100, 0); //Initial
             child.position = new Vector3((((directionVector.x * child.transform.GetSiblingIndex()) + 1) * 200) + Random.Range(-100,100),
-                                        ((child.transform.GetSiblingIndex() + 1) * 200) + 200,
+                                        ((child.transform.GetSiblingIndex() + 1) * 300) + 300,
                                         (((directionVector.z * child.transform.GetSiblingIndex()) + 1) * 200) + Random.Range(-100,100));
             /*child.position = new Vector3(child.position.x * directionVector.x
                                         ,child.position.y * directionVector.y

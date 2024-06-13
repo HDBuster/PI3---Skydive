@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - PointSmall
   - PointLarge
+  - Plane
   layers:
   - Default
   - TransparentFX
