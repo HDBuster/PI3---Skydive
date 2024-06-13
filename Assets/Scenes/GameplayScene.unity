@@ -169,6 +169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 1214951558927283924, guid: 7510ac0f3daec1b48aca8fc7d76c35c2, type: 3}
+  redCircle: {fileID: 1214951558927283924, guid: 7510ac0f3daec1b48aca8fc7d76c35c2, type: 3}
+  greenCircle: {fileID: 5474385993400387492, guid: 755f9bb80b9de6f4f96af8b0dbd19e67, type: 3}
+  blueCircle: {fileID: 7628712025563165460, guid: bdc3eecd76587cb4f8b34be3c0450766, type: 3}
+  yellowCircle: {fileID: 5084358430209028564, guid: 34d5e54eab38fb541b0cb78043f2fa6d, type: 3}
   player: {fileID: 413444964}
   target: {fileID: 303371997}
 --- !u!114 &3064052
@@ -1524,7 +1528,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 171.18762, w: 0}
+  m_margin: {x: -13.272949, y: 0, z: 146.29626, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1692,7 +1696,7 @@ Transform:
   m_GameObject: {fileID: 413444964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1000, y: 10000, z: 1000}
+  m_LocalPosition: {x: -1000, y: 10000, z: 1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
