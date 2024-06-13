@@ -8,7 +8,7 @@ public class CirclesVisibility : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player1");
     }
 
     void Update()

@@ -9,7 +9,7 @@ public class GenerateCircles : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player1");
         float playerHeight = player.transform.position.y; // Find player initial height;
 
         for (int i = 1; i < ((playerHeight - 100) * 0.01f); i++) // Instantiate circles. Quantity depends on player initial height.

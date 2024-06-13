@@ -18,7 +18,8 @@ public class PlayerMachineStates : MonoBehaviour
 
     Rigidbody rb;
     MeshRenderer objectParachute;
-    Animator animator;
+    [SerializeField]Animator animator;
+    [SerializeField] Animator cameraAnimator;
 
     public enum State {Flat, Angle, HeadDown, Parachute, Land }
     public State state = State.Angle;
@@ -97,7 +98,9 @@ public class PlayerMachineStates : MonoBehaviour
     void ParachuteState()
     {
         //actions
+        cameraAnimator.Play("camera1");
         objectParachute.enabled = true;
+        objectParachute.transform.localScale = Vector3.Lerp(objectParachute.transform.localScale, new Vector3(40, 72, 60), 0.1f);
         
         //rb.MoveRotation(Quaternion.Euler(0, 180, 0));
         //this.transform.rotation = Quaternion.Slerp(Quaternion.Euler(90,180,this.transform.rotation.z),Quaternion.Euler(0,180,this.transform.rotation.z), 1 * Time.fixedDeltaTime);
@@ -110,12 +113,12 @@ public class PlayerMachineStates : MonoBehaviour
                 if (!parachuteOpen)
                 {
                     //rb.MoveRotation(Quaternion.Euler(0, this.transform.rotation.z, 0));
-                    transform.rotation = Quaternion.Euler(0f, this.transform.rotation.z, 0f);
+                    //transform.rotation = Quaternion.Euler(0f, this.transform.rotation.z, 0f);
                     AudioSource.PlayClipAtPoint(parachuteAudio, this.transform.position, 1);
                 }
                 //this.transform.rotation = Quaternion.Slerp();
                         break;
-            case true: Animation("Falling"); break;
+            case true: Animation("ParachuteIdle"); break;
         }
         //transitions
     }
@@ -140,10 +143,9 @@ public class PlayerMachineStates : MonoBehaviour
 
     private void Start()
     {
-        objectParachute = this.transform.GetChild(2).GetComponent<MeshRenderer>();
+        objectParachute = this.transform.GetChild(1).GetComponent<MeshRenderer>();
         objectParachute.enabled = false;
 
-        animator = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
     }
 
@@ -167,8 +169,9 @@ public class PlayerMachineStates : MonoBehaviour
     {
         if (!animator.GetNextAnimatorStateInfo(0).IsName(state) && !animator.GetCurrentAnimatorStateInfo(0).IsName(state))
         {
-            animator.CrossFadeInFixedTime(state, animationSpeed * 1 * Time.fixedDeltaTime, -1, 0, 0);
+            animator.CrossFadeInFixedTime(state, transitionTime * Time.fixedDeltaTime, -1, 0, 0);
         }
-        animator.speed = Mathf.Abs(rb.velocity.y) * animationSpeed * Time.fixedDeltaTime;
+        //animator.speed = Mathf.Abs(rb.velocity.y) * animationSpeed * Time.fixedDeltaTime;
+        animator.speed = animationSpeed;
     }
 }

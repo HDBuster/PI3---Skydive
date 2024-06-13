@@ -175,9 +175,13 @@ MonoBehaviour:
   cameraa: {fileID: 0}
   fallSpeed: 0
   mousePos: 0
-  forwardForce: 1
-  sideForce: 1
+  forwardForce: 200
+  sideForce: 200
   lookSpeed: 1
+  flatSpeed: 10
+  angleSpeed: 50
+  headSpeed: 100
+  parachuteSpeed: 0
 --- !u!114 &4891966619425978604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +197,7 @@ MonoBehaviour:
   circle: {fileID: 1313797035524446872, guid: fa77faaa2d997894996f4f460bad109e, type: 3}
   points: {fileID: 11400000, guid: 3cba580da8bfe664f93d310ddd6ef8d7, type: 2}
   pointClip: {fileID: 8300000, guid: 2a10b1b511c6f844d944016e4ced1d25, type: 3}
+  mixerGroup: {fileID: 0}
   pointUI: {fileID: 0}
 --- !u!114 &6371226867522517156
 MonoBehaviour:

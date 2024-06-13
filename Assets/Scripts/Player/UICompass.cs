@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class UICompass : MonoBehaviour
 {
+    [SerializeField]
     GameObject player;
+    [SerializeField]
     GameObject target;
 
     private void Start()
     {
-        player = GameObject.Find("Player");
-        target = GameObject.Find("Target");
+        /*player = GameObject.Find("Player");
+        target = GameObject.Find("Target");*/
     }
     void Update()
     {
