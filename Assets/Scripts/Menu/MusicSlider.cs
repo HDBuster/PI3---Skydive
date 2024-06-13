@@ -7,8 +7,8 @@ public class MusicSlider : MonoBehaviour
 {
     [SerializeField]
     AudioMixer mixer;
-    [SerializeField]
-    AudioSource audioSource;
+    //[SerializeField]
+    //AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
