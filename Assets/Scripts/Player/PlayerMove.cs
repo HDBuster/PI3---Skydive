@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float forwardForce;
     [SerializeField] float sideForce;
     [SerializeField] float lookSpeed;
+    [SerializeField] float parachuteLookSpeed;
 
     [Header("Vertical Speed")]
     [SerializeField] float flatSpeed;
@@ -50,7 +51,7 @@ public class PlayerMove : MonoBehaviour
                 //rb.drag = 0.25f;
                 break;
             case PlayerMachineStates.State.Parachute:
-                rb.AddRelativeForce(Vector3.forward * (forwardForce * 7)); //Move foward faster
+                rb.AddRelativeForce(Vector3.forward * (forwardForce)); //Move foward faster
                 //rb.AddRelativeForce(-Vector3.up * parachuteSpeed); //Fall down
                 //rb.drag = 1.5f;
                 break;
@@ -63,26 +64,24 @@ public class PlayerMove : MonoBehaviour
         StateFalling();
 
         //Rotate by looking around
-        /*switch (state)
+        switch (state)
         {
             case PlayerMachineStates.State.Flat:
             case PlayerMachineStates.State.Angle:
             case PlayerMachineStates.State.HeadDown:
-                rb.MoveRotation(rb.rotation * Quaternion.Euler(0, mouse.x * lookSpeed, 0));
-                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+                rb.MoveRotation(Quaternion.Euler(rb.rotation.eulerAngles.x, (mouse.x * lookSpeed) + rb.rotation.eulerAngles.y, rb.rotation.eulerAngles.z));
                 break;
             case PlayerMachineStates.State.Parachute:
                 rb.MoveRotation(rb.rotation * Quaternion.Euler(0, mouse.x * lookSpeed, 0));
-                rb.constraints = RigidbodyConstraints.None;
-                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                rb.MoveRotation(Quaternion.Euler(rb.rotation.eulerAngles.x, (mouse.x * parachuteLookSpeed) + rb.rotation.eulerAngles.y, rb.rotation.eulerAngles.z));
                 break;
-        }*/
+        }
 
         //rb.MoveRotation(rb.rotation * Quaternion.Euler(0, mouse.x * lookSpeed, 0));
         rb.MoveRotation(Quaternion.Euler(rb.rotation.eulerAngles.x, (mouse.x * lookSpeed) + rb.rotation.eulerAngles.y, rb.rotation.eulerAngles.z));
 
         //Camera
-        switch (state){
+        /*switch (state){
             case PlayerMachineStates.State.Flat:
                 //cameraa.transform.localPosition = new Vector3 (0, 0, -50);
                 cameraa.transform.localPosition = Vector3.Lerp(cameraa.transform.localPosition, new Vector3(0, 60, 0), 0.05f);
@@ -109,8 +108,8 @@ public class PlayerMove : MonoBehaviour
                 //cameraa.transform.localEulerAngles = Vector3.Lerp(cameraa.transform.localEulerAngles, new Vector3(-60, 0, 0), 0.05f);
                 //cameraa.transform.localRotation = Quaternion.Euler(-60, 0, 0);
                 //cameraa.transform.localRotation = Quaternion.Euler(new Vector3(mouse.x, -60, 0));
-                break;
-        }
+                //break;*/
+        //}
 
 
         //cameraa.transform.position = this.transform.position + new Vector3(-10,10,-10);

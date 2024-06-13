@@ -28,10 +28,20 @@ public class PlayerPoints : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {        
-        if (col.gameObject.CompareTag("PointCircle"))
+        /*if (col.gameObject.CompareTag("PointCircle"))
         {
             col.gameObject.SetActive(false);
             points.points++;
+            AudioSource.PlayClipAtPoint(pointClip, this.transform.position, 1);
+        }*/
+        if (col.gameObject.CompareTag("PointSmall"))
+        {
+            points.points = points.points + 200;
+        }
+        if (col.gameObject.CompareTag("PointLarge"))
+        {
+            points.points = points.points + 50;
+            col.transform.parent.gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(pointClip, this.transform.position, 1);
         }
     }

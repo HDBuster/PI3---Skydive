@@ -45,13 +45,14 @@ public class PlayerMachineStates : MonoBehaviour
     {
         //actions
         Animation("Falling");
+        CameraAnimation("flat");
 
         //transitions
         if (move.y == 0)
         {
             state = State.Angle;
         }
-        else if (parachute == 1)
+        else if (parachute == 1 && rb.position.y <= 200)
         {
             state = State.Parachute;
         }
@@ -61,6 +62,7 @@ public class PlayerMachineStates : MonoBehaviour
     {
         //actions
         Animation("Fast");
+        CameraAnimation("angle");
 
         //transitions
         if (move.y == 1)
@@ -71,7 +73,7 @@ public class PlayerMachineStates : MonoBehaviour
         {
             state = State.Flat;
         }
-        else if (parachute == 1)
+        else if (parachute == 1 && rb.position.y <= 200)
         {
             state = State.Parachute;
         }
@@ -81,13 +83,14 @@ public class PlayerMachineStates : MonoBehaviour
     {
         //actions
         Animation("Faster");
+        CameraAnimation("headdown");
 
         //transitions
         if (move.y == 0)
         {
             state = State.Angle;
         }
-        else if (parachute == 1)
+        else if (parachute == 1 && rb.position.y <= 200)
         {
             state = State.Parachute;
         }
@@ -98,7 +101,8 @@ public class PlayerMachineStates : MonoBehaviour
     void ParachuteState()
     {
         //actions
-        cameraAnimator.Play("camera1");
+        //cameraAnimator.Play("camera1");
+        CameraAnimation("camera1");
         objectParachute.enabled = true;
         objectParachute.transform.localScale = Vector3.Lerp(objectParachute.transform.localScale, new Vector3(40, 72, 60), 0.1f);
         
@@ -173,5 +177,13 @@ public class PlayerMachineStates : MonoBehaviour
         }
         //animator.speed = Mathf.Abs(rb.velocity.y) * animationSpeed * Time.fixedDeltaTime;
         animator.speed = animationSpeed;
+    }
+
+    void CameraAnimation(string state)
+    {
+        if (!cameraAnimator.GetNextAnimatorStateInfo(0).IsName(state) && !cameraAnimator.GetCurrentAnimatorStateInfo(0).IsName(state))
+        {
+            cameraAnimator.CrossFadeInFixedTime(state, transitionTime * Time.fixedDeltaTime, -1, 0, 0);
+        }
     }
 }

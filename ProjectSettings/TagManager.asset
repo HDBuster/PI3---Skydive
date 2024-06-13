@@ -8,6 +8,8 @@ TagManager:
   - PointCircle
   - SeaWater
   - Ground
+  - PointSmall
+  - PointLarge
   layers:
   - Default
   - TransparentFX
