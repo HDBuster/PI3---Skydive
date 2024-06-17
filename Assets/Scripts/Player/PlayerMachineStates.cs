@@ -124,7 +124,8 @@ public class PlayerMachineStates : MonoBehaviour
                 Animation("ParachuteIdle");
                 animator.speed = 1;
                 objectParachute.enabled = true;
-                objectParachute.transform.localScale = Vector3.Lerp(objectParachute.transform.localScale, new Vector3(40, 72, 60), 0.1f);
+                objectParachute.transform.localScale = Vector3.Lerp(objectParachute.transform.localScale, new Vector3(40, 72, 60), 0.05f);
+                objectParachute.transform.localPosition = Vector3.Lerp(objectParachute.transform.localPosition, new Vector3(0,63,2), 0.05f);
                 if (!isParachuteOn)
                 {
                     parachuteAudio.Play();

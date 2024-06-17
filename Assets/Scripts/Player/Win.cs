@@ -65,6 +65,7 @@ public class Win : MonoBehaviour
         else if (collision.gameObject.CompareTag("Plane"))
         {
             playerDefeat = true;
+            gameSFX.sound = 2;
             LoseScene();
         }
     }
